@@ -1,38 +1,99 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  min-height: calc(100vh - 3rem);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.weight500{
+  font-weight:500;
+}
+.weight600{
+  font-weight:600;
+}
+.weight700{
+  font-weight:700;
+}
+.make-center{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+/* navbar */
+.header-color{
+  background:#306090;
+  color:white;
+  padding:0.5rem 1.5rem ;
+  text-align:left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* sidebar */
+.sidebar{
+  background:#303048
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.search-input{
+  border:transparent;
+  padding:0.75rem 1.5rem;
+  border-radius:20px;
+  width:15rem;
+  background:#353E48;
+  color:white;
+}
+.search-input::placeholder{
+  color:#778495
+}
+.search-section{
+  margin-top:1rem;
+}
+
+.sidebar-list{
+  list-style:none;
+}
+.invoice-list{
+  padding: 0.5rem 1rem 0.2rem 0.5rem;
+  display: grid;
+  color: #9ca7ba;
+  background: transparent;
+  border: none;
+}
+.invoice-details{
+  display:flex;
+  justify-content:space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.invoice-details-bottom-row{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.invoice-bottom-row-details{
+  display: grid;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.invoice-details-row-name{
+  color:#66a7ff
+}
+
+/* invoice template */
+.plus-img{
+  width:1.5rem;
+}
+
+.invoice-card{
+  position:relative;
+}
+
+/* add invoice btn */
+.add-invoice-btn {
+  position:absolute;
+  border:none;
+  top:-1.7rem;
+  right:3rem;
+  border-radius:50%;
+  background:#FF64A4;
+  padding:1rem;
 }
