@@ -1,6 +1,6 @@
 import skip from "./../assets/skip.png";
-import close from "./../assets/close.png";
 import { useDataContext } from "./../Context/DataContext";
+import { FormHeader } from './../Utils/FormHeader';
 
 export function CountryDataForm() {
   const {
@@ -34,21 +34,17 @@ export function CountryDataForm() {
     setShowModal(false)
     return setInvoiceModal(true)
   }
+  const callInvoiceDataForm=()=>{
+    setShowModal(false)
+    return setInvoiceModal(true)
+  }
+
   return (
-    <section className="country-form make-center">
       <div className="form-container">
-        <div className="form-title">
-          <h2>Create New Invoice</h2>
-          <button
-            onClick={() => setShowModal(false)}
-            className="close-btn"
-            aria-label="close button make-center"
-          >
-            <img alt="close" className="close-img" src={close} />
-          </button>
-        </div>
-        <div className="form-header">
-          <h3>CUSTOMER DETAILS</h3>
+        <div className="countrydata-form-margin">
+        <FormHeader closeModal={setShowModal}/>
+        <div className="form-header form-header-border extra-padding">
+          <p className="small-text weight600">CUSTOMER DETAILS</p>
           <button
           onClick={fillDummyData}
             className="skip-button weight700 make-center"
@@ -58,9 +54,9 @@ export function CountryDataForm() {
             <img src={skip} className="skip-img" alt="skip" />
           </button>
         </div>
-        <form className="form">
+        <form className="form extra-margin">
           <fieldset className="move-start">
-            <label className="weight600 small-text">Full Name*</label>
+            <label className="weight600 super-small-text">Full Name*</label>
             <input
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -69,7 +65,7 @@ export function CountryDataForm() {
             />
           </fieldset>
           <fieldset className="move-start">
-            <label className="weight600 small-text">Phone*</label>
+            <label className="weight600 super-small-text">Phone*</label>
             <input
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -77,7 +73,7 @@ export function CountryDataForm() {
             />
           </fieldset>
           <fieldset className="move-start">
-            <label className="weight600 small-text">Address*</label>
+            <label className="weight600 super-small-text">Address*</label>
             <textarea
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -89,7 +85,7 @@ export function CountryDataForm() {
           </fieldset>
           <div className="seprator">
             <fieldset className="move-start">
-              <label className="weight600 small-text">Email ID*</label>
+              <label className="weight600 super-small-text">Email ID*</label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -98,7 +94,7 @@ export function CountryDataForm() {
               />
             </fieldset>
             <fieldset className="move-start">
-              <label className="weight600 small-text">Pincode*</label>
+              <label className="weight600 super-small-text">Pincode*</label>
               <input
                 value={pincode}
                 onChange={(e) => setPincode(e.target.value)}
@@ -108,10 +104,10 @@ export function CountryDataForm() {
             </fieldset>
           </div>
         </form>
+        </div>
         <div className="country-form-bottom">
-          <button /*onClick={}*/ disabled={true && !pincode && !fullName && !email && !phone } className="weight700">PROCEED</button>
+          <button onClick={()=>callInvoiceDataForm()} disabled={true && !pincode && !fullName && !email && !phone } className="weight700 proceed-btn">PROCEED</button>
         </div>
       </div>
-    </section>
   );
 }
