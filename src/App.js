@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { Header } from "./Components/Header";
+import { SideBar } from "./Components/SideBar";
+import { Invoice } from "./Components/Invoice";
+import { CountryDataForm } from "./Components/CountryDataForm";
+import { useDataContext } from "./Context/DataContext";
+import { InvoiceDataForm } from "./Components/InvoiceDataForm";
 function App() {
+  const { showModal, invoiceModal } = useDataContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <div className="App">
+        <SideBar />
+        <Invoice />
+       {(showModal || invoiceModal )&& <section className="country-form make-center">
+          {showModal && <CountryDataForm />}
+          {invoiceModal && <InvoiceDataForm />}
+        </section>}
+      </div>
     </div>
   );
 }
