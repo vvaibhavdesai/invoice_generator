@@ -170,6 +170,9 @@ display: flex;
   color:#66A7FF;
   border-radius:5px
 }
+.white{
+  color:white;
+}
 /* add invoice btn */
 .add-invoice-btn {
   position:absolute;
