@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
 .App {
   text-align: center;
   display: grid;
   grid-template-columns: 20rem 1fr;
   min-height: calc(100vh - 3rem);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .weight500{
@@ -19,14 +21,22 @@
   justify-content:center;
   align-items:center;
 }
+.gray {
+  color:#B4BBC5
+}
+.dark-gray{
+color:#5d646f
+}
 .small-text{
   font-size:0.9rem;
 }
+.super-small-text{
+  font-size: 0.85rem;
+}
+
 .move-start{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-start;
+display: flex;
+    gap: 0.5rem
 }
 /* navbar */
 .header-color{
@@ -40,6 +50,10 @@
 /* sidebar */
 .sidebar{
   background:#303048
+}
+
+.selected{
+  background:#404b57;
 }
 
 .search-input{
@@ -59,6 +73,7 @@
 
 .sidebar-list{
   list-style:none;
+  padding:0;
 }
 .invoice-list{
   padding: 0.5rem 1rem 0.2rem 0.5rem;
@@ -94,8 +109,67 @@
 
 .invoice-card{
   position:relative;
+  background:#f2f3f5
+}
+.invoice-card-header{
+  display:flex;
+  justify-content:space-between;
+}
+.invoice-card-holder{
+  display:grid;
+  gap:2rem;
+  padding:4rem 4rem 2rem 4rem;
+  max-width:70rem;
+  background-color: white;
+  margin:2rem;
+  border-radius:5px
+}
+.invoice-card-details{
+  display: grid;
+  gap: 0.5rem;
+  line-height:0;
+}
+.invoice-card-bottom-row{
+  display:grid;
+  gap:1rem;
+  justify-content: flex-end;
+  line-height: 0;
 }
 
+.invoice-card-bottom-row_value{
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+}
+.invoice-card-grandTotal{
+  display: grid;
+  justify-content: end;
+  line-height:0
+}
+.grandTotal_bottom_row{
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.bottom-row__value-color{
+  color:#383f48
+}
+.invoice-holder-details{
+  display:flex;
+  gap:2rem;
+  align-items:flex-start;
+}
+.print-btn{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  padding:0.75rem 1rem;
+  background:transparent;
+  border:1px solid #66A7FF;
+  color:#66A7FF;
+  border-radius:5px
+}
 /* add invoice btn */
 .add-invoice-btn {
   position:absolute;
@@ -119,15 +193,24 @@
 }
 .form-container{
   background:white;
-  padding-top: 1.5rem;
   border-radius:5px;
+}
+.extra-margin{
+  margin-top:1rem;
 }
 .form-header{
   display:flex;
   justify-content:space-between;
-  margin:0 1rem 1rem 1rem;
+  align-items: center;
+  line-height: 0;
+ 
 }
-
+.invoice-data-form-margin{
+    margin-bottom:3rem;
+}
+.countrydata-form-margin{
+  margin: 1rem ;
+}
 fieldset{
   border:none;
 }
@@ -135,14 +218,15 @@ fieldset{
   display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
-    margin:0 1rem 1rem 1rem;
+}
+.extra-padding{
+  padding:0 1rem;
 }
 
 .form-title{
   display:flex;
   justify-content:space-between;
-  align-items: flex-start;
-  margin:0 1rem 1rem 1rem;
+  align-items: center;
 }
 .close-btn{
   border:none;
@@ -150,6 +234,9 @@ fieldset{
 }
 .close-img{
   width:1.5rem;
+}
+button{
+  cursor:pointer;
 }
 button:active{
   transform:scale(0.9)
@@ -161,30 +248,29 @@ button:active{
   padding:1rem 2rem;
   border-radius:0 0 5px 5px; 
 }
-.country-form-bottom > button{
+.proceed-btn{
   padding:1rem 2rem;
   background:#66A7FF;
   color:white;
   border-radius:5px;
   border:none
-
 }
 .country-form-input{
-  padding:1rem 1.5rem;
+  padding:0.75rem 1rem;
 }
 
 .skip-button{
   background:#F3F4F6;
   border-radius:5px;
   border:none;
+  gap:1rem;
   color:#66A7FF;
-  padding:0.5rem 1rem;
+  padding:0.7rem 1rem;
   font-size:1.1rem;
 }
 
 
 .skip-img{
-  margin-left:1rem;
   width:0.7rem
 }
 
@@ -192,4 +278,117 @@ button:active{
   display: grid;
   gap: 1rem;
   align-content: space-between;
+}
+
+/* invoicedataform */
+.table-cover{
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.table{
+  width:100%;
+  border-spacing:0;
+}
+.th-color{
+  color:#B4BBC5;
+}
+.th-borders{
+  border-top:1px solid #B4BBC5;
+  border-collapse:0;
+  border-bottom:1px solid #B4BBC5;
+  padding:1rem ;
+}
+
+.td-body{
+  padding:2rem 2rem;
+  border-top:1px solid #B4BBC5;
+  border-bottom:1px solid #B4BBC5;
+}
+.text-align-right{
+ text-align:right
+}
+.text-align-left{
+ text-align:left
+}
+.text-align-center{
+ text-align:center
+}
+.form-row{
+  display:grid;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  gap: 2rem 1rem;
+}
+.form-row-base_style{
+  border-radius:5px;
+  border:1px solid #B4BBC5;
+}
+
+.form-numeric-values{
+  width:2rem;
+  text-align:center
+}
+.form-padding{
+  padding:0.75rem 1rem;
+}
+.form-bottom-row{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.form-margin{
+  margin:1rem 0;
+}
+.row-padding{
+  padding:0 1rem ;
+}
+
+.gap{
+  gap:4rem
+}
+.form-header-customer-detail{
+  display: grid;
+  gap: 0.5rem;
+  text-align: right;
+
+}
+
+.enter-button{
+  background:transparent;
+  border:1px solid #66A7FF;
+  border-radius:5px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  justify-self: end;
+}
+.enter-button > img{
+  width:1.25rem;
+}
+
+a{
+  text-decoration:none;
+}
+.form-row-footer{
+  display:flex;
+  align-items:center;
+  justify-content: space-around;
+  background:#eef0f2;
+  border-radius:5px;
+}
+
+.footer-values{
+  margin:0 1rem;
+  text-align: left;
+}
+
+.form-container-body{
+padding:1rem;
+}
+
+.form-header-border{
+  padding-bottom:0.5rem;
+  border-bottom:1px solid #B4BBC5
 }
