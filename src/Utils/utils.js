@@ -4,19 +4,13 @@ export function formatDate(date) {
   return `${newDate} ${newTime}`;
 }
 
-export const reducer = (total, item) => {
-  return total + item.subTotal;
+export const createReducer = (itemProperty) => {
+  if (itemProperty !== "subTotal") {
+    return (total, item) => total + item[itemProperty] * item.quantity;
+  } else {
+    return (total, item) => total + item[itemProperty];
+  }
 };
-export const taxReducer = (total, item) => {
-  return total + item.taxAmount;
-};
-export const discountReducer = (total, item) => {
-  return total + item.discountAmount;
-};
-export const grandTotalReducer = (total, item) => {
-  return total + item.subTotal;
-};
-
 
 export function clearItemInput(
   setTax,
