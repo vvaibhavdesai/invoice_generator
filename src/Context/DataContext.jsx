@@ -10,7 +10,6 @@ export function DataContextProvider({ children }) {
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [pincode, setPincode] = useState("");
-  const [id, setId] = useState(null);
   const [{ invoiceList }, dispatch] = useReducer(reducer, {
     invoiceList: [],
   });
@@ -30,8 +29,6 @@ export function DataContextProvider({ children }) {
       value={{
         invoiceList,
         dispatch,
-        id,
-        setId,
         showModal,
         setShowModal,
         invoiceModal,
