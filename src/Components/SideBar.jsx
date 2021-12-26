@@ -1,7 +1,9 @@
 import { useDataContext } from "./../Context/DataContext";
-import { formatDate } from "./../Utils/dateformatter";
+import { formatDate } from "../utils/utils";
+import { useNavigate } from "react-router-dom";
 export function SideBar() {
-  const { invoiceList, setId, id } = useDataContext();
+  const { invoiceList,  id } = useDataContext();
+  const navigate = useNavigate()
 
   return (
     <aside className="sidebar">
@@ -13,7 +15,7 @@ export function SideBar() {
           invoiceList.map((item) => (
             <li
               className={id === item.id ? `selected` : ``}
-              onClick={() => setId(item.id)}
+              onClick={() => navigate(`/dashboard/${item.id}`)}
               key={item.id}
             >
               <div className="invoice-list">
