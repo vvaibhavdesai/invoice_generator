@@ -4,22 +4,27 @@ import TableBody from "./Components/TableBody";
 import { useDataContext } from "../../Context/DataContext";
 import { TableHead } from "./Components/TableHead";
 import { OrderItemDetailForm } from "./Components/OrderItemForm";
-import {
-  clearItemInput,
-  createReducer,
-} from "../../utils/utils";
+import { clearItemInput, createReducer } from "../../utils/utils";
 import FormBottomRow from "./Components/FormBottomRow";
 import FormRowFotter from "./Components/FormRowFotter";
+import { useSelector } from "react-redux";
 
 export function InvoiceDataForm() {
-  const { setInvoiceModal, fullName, phone, pincode, address, email } =
-    useDataContext();
+  const { setInvoiceModal } = useDataContext();
   const [itemName, setItemName] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState();
+  const [price, setPrice] = useState();
   const [itemsList, setItemsList] = useState([]);
   const [tax, setTax] = useState(0);
   const [discount, setDiscount] = useState(0);
+  const fullName = useSelector((state) => state.user.fullName);
+
+  console.log(
+    useSelector((state) => state.user),
+    "this is user"
+  );
+  
+  const email = useSelector((state) => state.user.email);
 
   const subTotal = itemsList.reduce(createReducer("subTotal"), 0).toFixed(2);
   const taxAmount = itemsList.reduce(createReducer("taxAmount"), 0).toFixed(2);
@@ -84,10 +89,6 @@ export function InvoiceDataForm() {
 
   const formRowFooterProps = {
     itemsList,
-    email,
-    phone,
-    address,
-    pincode,
     taxAmount,
     discountAmount,
     subTotal,

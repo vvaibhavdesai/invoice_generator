@@ -1,28 +1,24 @@
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { useDataContext } from "../../../Context/DataContext";
-import { clearCountryDataFormEntries } from "../../../utils/utils";
+import { updateInvoiceList } from "../../../redux/userSlice";
 export default function FormRowFotter({
   itemsList,
-  email,
-  phone,
-  address,
-  pincode,
   taxAmount,
   discountAmount,
   subTotal,
   grandTotal,
 }) {
-  const {
-    dispatch,
-    fullName,
-    setFullName,
-    setAddress,
-    setEmail,
-    setPhone,
-    setPincode,
-    setInvoiceModal,
-  } = useDataContext();
-  function invoiceAdder(
+  const { setInvoiceModal } = useDataContext();
+  const fullName = useSelector((state) => state.user.fullName);
+  const email = useSelector((state) => state.user.email);
+  const phone = useSelector((state) => state.user.phone);
+  const address = useSelector((state) => state.user.address);
+  const pincode = useSelector((state) => state.user.pincode);
+  const dispatch = useDispatch();
+
+  async function invoiceAdder(
     itemsList,
     email,
     phone,
@@ -51,19 +47,26 @@ export default function FormRowFotter({
       (total, item) => total + item.discount,
       0
     );
-    invoiceData.taxAmount = taxAmount;
-    invoiceData.discountAmount = discountAmount;
-    invoiceData.subTotal = subTotal;
-    invoiceData.grandTotal = grandTotal;
-    dispatch({ type: "ADD_ITEMS", payload: invoiceData });
-    clearCountryDataFormEntries(
-      setFullName,
-      setPincode,
-      setEmail,
-      setAddress,
-      setPhone
+    invoiceData.taxAmount = parseInt(taxAmount);
+    invoiceData.discountAmount = parseInt(discountAmount);
+    invoiceData.subTotal = parseInt(subTotal);
+    invoiceData.grandTotal = parseInt(grandTotal);
+    console.log(invoiceData, "this is invoice data");
+
+    const {
+      data: { doc },
+      status,
+    } = await axios.post(
+      "http://localhost:5000/api/invoices/create",
+      { invoice: invoiceData },
+      { withCredentials: true }
     );
-    return setInvoiceModal(false);
+    if (status === 200) {
+      dispatch(updateInvoiceList(doc));
+      return setInvoiceModal(false);
+    } else if (status !== 200) {
+      return window.alert("Error in adding invoice");
+    }
   }
   return (
     <div className="form-row-footer ">

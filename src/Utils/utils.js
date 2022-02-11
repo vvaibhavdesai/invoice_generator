@@ -12,18 +12,12 @@ export const createReducer = (itemProperty) => {
   }
 };
 
-export function clearItemInput(
-  setTax,
-  setDiscount,
-  setItemName,
-  setQuantity,
-  setPrice
-) {
-  setTax("");
-  setDiscount("");
-  setItemName("");
-  setQuantity("");
-  return setPrice("");
+export function clearItemInput(tax, discount, itemName, quantity, price) {
+  tax.current = null;
+  discount.current = null;
+  itemName.current = "";
+  quantity.current = null;
+  return (price.current = null);
 }
 
 export function clearCountryDataFormEntries(

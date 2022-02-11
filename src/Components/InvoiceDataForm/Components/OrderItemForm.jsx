@@ -39,7 +39,9 @@ export function OrderItemDetailForm({
       />
       <button
         disabled={true && !itemName && !price}
-        onClick={() => addtoItemList(quantity, price, tax, discount)}
+        onClick={() => {
+          addtoItemList(quantity, price, tax, discount);
+        }}
         className="enter-button"
         aria-label="Add item button"
       >

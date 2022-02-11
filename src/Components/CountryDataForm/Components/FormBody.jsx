@@ -1,21 +1,17 @@
-import { useDataContext } from "../../../Context/DataContext";
-
-export default function FormBody() {
-  const {
-    fullName,
-    setFullName,
-    phone,
-    setPhone,
-    address,
-    setAddress,
-    email,
-    setEmail,
-    pincode,
-    setPincode,
-  } = useDataContext();
-
+export default function FormBody({
+  fullName,
+  setFullName,
+  phone,
+  setPhone,
+  address,
+  setAddress,
+  email,
+  setEmail,
+  pincode,
+  setPincode,
+}) {
   return (
-    <form className="form extra-margin">
+    <form className="form extra-margin" onSubmit={(e) => e.preventDefault()}>
       <fieldset className="move-start">
         <label className="weight600 super-small-text">Full Name*</label>
         <input

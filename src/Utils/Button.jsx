@@ -8,7 +8,6 @@ export default function Button({
   disabled = "",
 }) {
   function callbackHandler(callbackArgs) {
-    console.log(callbackArgs, "yeh h artgs");
     if (callbackArgs) {
       return callback(callbackArgs);
     } else {

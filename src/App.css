@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap");
+body {
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
   display: grid;
@@ -6,7 +10,56 @@
   min-height: calc(100vh - 3rem);
   font-family: "Montserrat", sans-serif;
 }
-
+.login-form-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  /* border: 1px solid black; */
+}
+.login-form {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.form-fields {
+  background-color: transparent;
+  border: 2px solid #306090;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  font-size: 1rem;
+  color: #306090;
+  max-width: 15rem;
+  max-height: 2rem;
+}
+.form-submit-button {
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  border: 5px solid #ff64a4;
+  border-radius: 5px;
+  color: #ff64a4;
+  background-color: #f7e9ef;
+  text-align: center;
+  transition: 0.5s;
+}
+.form-submit-button:hover {
+  cursor: pointer;
+  border: 5px solid #f7e9ef;
+  color: #f7e9ef;
+  background-color: #ff64a4;
+}
+.form-fields::placeholder {
+  color: #89a5c0;
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+.form-input-container {
+  margin: 2rem 0;
+}
 .weight500 {
   font-weight: 500;
 }
@@ -21,6 +74,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.space-between {
+  justify-content: space-between;
+}
+.space-evenly {
+  justify-content: space-evenly;
+}
 .gray {
   color: #b4bbc5;
 }
@@ -33,10 +93,60 @@
 .super-small-text {
   font-size: 0.85rem;
 }
+.margin1rem {
+  margin: 1rem;
+}
 
 .move-start {
   display: flex;
   gap: 0.5rem;
+}
+.pink {
+  background-color: #ff64a4;
+}
+.blue {
+  color: #306090;
+}
+/* homepage */
+
+.homepage {
+  height: 100vh;
+}
+.homepage-hero-container {
+  display: flex;
+  /* background: #306090; */
+  align-items: center;
+  justify-content: center;
+}
+.hero-text {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10rem;
+  padding-left: 5rem;
+  margin: 2rem;
+}
+.hero-img-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 20rem;
+  padding-top: 6rem;
+}
+.hero-img {
+  height: 25rem;
+  width: 30rem;
+}
+.navbar {
+  height: 5rem;
+}
+.homepage-btn {
+  color: #306090;
+  /* border-color: ; */
+  background-color: transparent;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 2px solid #306090;
 }
 /* navbar */
 .header-color {
