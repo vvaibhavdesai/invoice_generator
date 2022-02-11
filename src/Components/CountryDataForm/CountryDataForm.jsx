@@ -5,7 +5,7 @@ import FormBody from "./Components/FormBody";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateUserDetails } from "../../redux/userSlice";
-import { clearCountryDataFormEntries } from "../../utils/utils";
+import { clearCountryDataFormEntries } from "../../lib/utils";
 
 export function CountryDataForm() {
   const [fullName, setFullName] = useState("");

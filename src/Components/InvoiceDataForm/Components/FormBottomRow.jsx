@@ -1,4 +1,4 @@
-import FormInput from "../../../utils/Input";
+import FormInput from "../../../lib/Input";
 
 export default function FormBottomRow({
   tax,

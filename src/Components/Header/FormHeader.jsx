@@ -1,6 +1,6 @@
 import close from "./../../assets/close.png";
 import { useDataContext } from "../../Context/DataContext";
-import Button from "../../utils/Button";
+import Button from "../../lib/Button";
 export function FormHeader({ closeModal }) {
   const { setShowModal } = useDataContext();
   return (

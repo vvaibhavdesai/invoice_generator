@@ -1,9 +1,9 @@
-import { formatDate } from "../../utils/utils";
+import { formatDate } from "../../lib/utils";
 import printer from "./../../assets/printer.png";
 import { useNavigate, useParams } from "react-router-dom";
 import close from "./../../assets/close.png";
 import InvoiceTable from "./Components/InvoiceTable";
-import Button from "../../utils/Button";
+import Button from "../../lib/Button";
 import { SideBar } from "../SideBar";
 import { Navbar } from "../Navbar";
 import { useSelector } from "react-redux";

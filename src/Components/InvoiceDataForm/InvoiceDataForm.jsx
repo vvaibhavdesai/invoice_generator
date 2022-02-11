@@ -4,7 +4,7 @@ import TableBody from "./Components/TableBody";
 import { useDataContext } from "../../Context/DataContext";
 import { TableHead } from "./Components/TableHead";
 import { OrderItemDetailForm } from "./Components/OrderItemForm";
-import { clearItemInput, createReducer } from "../../utils/utils";
+import { clearItemInput, createReducer } from "../../lib/utils";
 import FormBottomRow from "./Components/FormBottomRow";
 import FormRowFotter from "./Components/FormRowFotter";
 import { useSelector } from "react-redux";
@@ -23,7 +23,7 @@ export function InvoiceDataForm() {
     useSelector((state) => state.user),
     "this is user"
   );
-  
+
   const email = useSelector((state) => state.user.email);
 
   const subTotal = itemsList.reduce(createReducer("subTotal"), 0).toFixed(2);

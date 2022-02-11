@@ -1,4 +1,4 @@
-import FormInput from "../../../utils/Input";
+import FormInput from "../../../lib/Input";
 import enter from "./../../../assets/enter.png";
 export function OrderItemDetailForm({
   itemName,
