@@ -2,6 +2,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../App";
 export default function SignupForm({ heroVisibility }) {
   const name = useRef(null);
   const email = useRef(null);
@@ -11,7 +12,7 @@ export default function SignupForm({ heroVisibility }) {
   async function loginHandler({ email, password }) {
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        BASE_URL + "api/auth/login",
         {
           email,
           password,
@@ -20,10 +21,9 @@ export default function SignupForm({ heroVisibility }) {
       );
       if (data.code === "LOGIN_SUCCESS") {
         navigate("/dashboard");
-      } else {
       }
     } catch (error) {
-      console.log(error);
+      window.alert(error.message);
     }
   }
 

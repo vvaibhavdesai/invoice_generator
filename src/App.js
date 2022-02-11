@@ -12,6 +12,8 @@ import axios from "axios";
 import { updateInvoiceList } from "./redux/userSlice";
 import { useDispatch } from "react-redux";
 
+export const BASE_URL = process.env.REACT_APP_BASE_URL 
+
 function App() {
   const { showModal, invoiceModal } = useDataContext();
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ function App() {
           data: {
             invoices: { userInvoices },
           },
-        } = await axios.get("http://localhost:5000/api/invoices/all", {
+        } = await axios.get(BASE_URL + "api/invoices/all", {
           withCredentials: true,
         });
         if (userInvoices) {

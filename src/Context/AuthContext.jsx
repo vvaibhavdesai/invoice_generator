@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, createContext, useContext, useLayoutEffect } from "react";
+import { BASE_URL } from "../App";
 
 export const AuthContext = createContext();
 
@@ -9,12 +10,9 @@ export function AuthContextProvider({ children }) {
   useLayoutEffect(() => {
     (async function () {
       try {
-        const { data } = await axios.get(
-          "http://localhost:5000/api/auth/userinfo",
-          {
-            withCredentials: true,
-          }
-        );
+        const { data } = await axios.get(BASE_URL + "api/auth/userinfo", {
+          withCredentials: true,
+        });
         if (data.code === "USER_INFO_FETCHED") {
           let userData = {
             ...data,
@@ -22,7 +20,7 @@ export function AuthContextProvider({ children }) {
           setUser(userData);
         }
       } catch (error) {
-        console.log(error);
+        window.alert(error.message);
       }
     })();
   }, []);
