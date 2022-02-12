@@ -20,7 +20,7 @@ export function AuthContextProvider({ children }) {
           setUser(userData);
         }
       } catch (error) {
-        window.alert(error.message);
+        console.log(error.message);
       }
     })();
   }, []);

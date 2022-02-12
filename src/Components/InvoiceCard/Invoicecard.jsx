@@ -27,9 +27,25 @@ export function InvoiceCard() {
               setId("");
               return navigate("/dashboard");
             }}
-            style={{ position: "absolute", top: "90px", left: "330px" }}
+            style={{
+              position: "absolute",
+              top: "90px",
+              left: "330px",
+              background: "transparent",
+              outline: "none",
+              fontSize: "2rem",
+              padding: "0 0.5rem",
+              border: "none",
+            }}
           >
-            <img src={close} alt={""} />
+            <img
+              src={close}
+              alt={""}
+              style={{
+                height: "2rem",
+                width: "2rem",
+              }}
+            />
           </button>
           <div className="invoice-card-header">
             <div className="invoice-card-details text-align-left ">

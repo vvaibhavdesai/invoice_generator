@@ -9,64 +9,22 @@ import { useNavigate } from "react-router-dom";
 export default function Homepage() {
   const [heroVisibility, setHeroVisibility] = useState(false);
   const { user } = useAuthContext();
-  const navigation = useNavigate();
+  const navigate = useNavigate();
+
   useLayoutEffect(() => {
     if (user?.userID) {
-      return navigation("/dashboard");
+      return navigate("/dashboard");
     } else {
       return;
     }
   }, [user]);
-  
+
   return (
     <>
       <div className=" homepage">
         <nav className="weight600 make-center space-between navbar">
           <p>&nbsp;</p>
-          <div className="make-center space-evenly">
-            <motion.p
-              animate={{
-                y: 0,
-              }}
-              initial={{ y: -60 }}
-              transition={{
-                type: "spring",
-                stiffness: 30,
-                damping: 10,
-              }}
-              className="margin1rem blue"
-            >
-              Signin
-            </motion.p>
-            <motion.p
-              animate={{
-                y: 0,
-              }}
-              initial={{ y: -60 }}
-              transition={{
-                type: "spring",
-                stiffness: 30,
-                damping: 10,
-              }}
-              className="margin1rem blue"
-            >
-              Login
-            </motion.p>
-            <motion.p
-              animate={{
-                y: 0,
-              }}
-              initial={{ y: -60 }}
-              transition={{
-                type: "spring",
-                stiffness: 30,
-                damping: 10,
-              }}
-              className="margin1rem blue"
-            >
-              About
-            </motion.p>
-          </div>
+          <div className="make-center space-evenly"></div>
         </nav>
         <section className="homepage-hero-container">
           <div className="hero-text">
@@ -84,7 +42,6 @@ export default function Homepage() {
               }}
             />
           </div>
-          <SignupForm heroVisibility={heroVisibility} />
           <div className="hero-img-container">
             <motion.img
               className="hero-img"
@@ -105,7 +62,10 @@ export default function Homepage() {
           </div>
         </section>
         <motion.button
-          onClick={() => setHeroVisibility(true)}
+          onClick={() => {
+            navigate("/register");
+            return setHeroVisibility(true);
+          }}
           animate={{
             y: heroVisibility ? 200 : -50,
             opacity: heroVisibility ? 0 : 1,

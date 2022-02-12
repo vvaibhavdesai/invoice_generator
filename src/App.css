@@ -25,6 +25,17 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+
+.form-div {
+  background-color: #f7e9ef;
+  height: 30rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
 .form-fields {
   background-color: transparent;
   border: 2px solid #306090;
@@ -148,6 +159,33 @@ body {
   border-radius: 5px;
   border: 2px solid #306090;
 }
+/* signup form */
+.register-btn {
+  color: white;
+  /* border-color: ; */
+  background-color: #306090;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 2px solid #306090;
+  cursor: pointer;
+  align-self: flex-start;
+  height: 3rem;
+  width: 9rem;
+}
+.login-btn {
+  color: white;
+  /* border-color: ; */
+  background-color: #ff64a4;
+  padding: 0.5rem 2rem;
+  height: 3rem;
+  width: 9rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 2px solid #ff64a4;
+  cursor: pointer;
+}
+
 /* navbar */
 .header-color {
   background: #306090;

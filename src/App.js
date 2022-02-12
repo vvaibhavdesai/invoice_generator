@@ -11,8 +11,9 @@ import { useEffect, useLayoutEffect } from "react";
 import axios from "axios";
 import { updateInvoiceList } from "./redux/userSlice";
 import { useDispatch } from "react-redux";
+import SignupForm from "./Components/HomePage/Components/SignupForm";
 
-export const BASE_URL = process.env.REACT_APP_BASE_URL 
+export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function App() {
   const { showModal, invoiceModal } = useDataContext();
@@ -32,7 +33,8 @@ function App() {
           return dispatch(updateInvoiceList(userInvoices));
         }
       } catch (e) {
-        window.alert(e.message);
+        console.log(e.message);
+        // window.alert(e.message);
       }
     })();
   }, []);
@@ -55,6 +57,7 @@ function App() {
       <>
         <Routes>
           <Route path={"/"} element={<Homepage />} />
+          <Route path={"/register"} element={<SignupForm />} />
           <Route
             path={"/dashboard"}
             element={
