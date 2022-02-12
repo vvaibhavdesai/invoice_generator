@@ -12,6 +12,7 @@ import axios from "axios";
 import { updateInvoiceList } from "./redux/userSlice";
 import { useDispatch } from "react-redux";
 import SignupForm from "./Components/HomePage/Components/SignupForm";
+import MyDocument from "./Components/Document";
 
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -58,6 +59,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Homepage />} />
           <Route path={"/register"} element={<SignupForm />} />
+
           <Route
             path={"/dashboard"}
             element={
@@ -71,6 +73,14 @@ function App() {
             element={
               <PrivateRoute>
                 <InvoiceCard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={"/download/:invoiceId"}
+            element={
+              <PrivateRoute>
+                <MyDocument />
               </PrivateRoute>
             }
           />

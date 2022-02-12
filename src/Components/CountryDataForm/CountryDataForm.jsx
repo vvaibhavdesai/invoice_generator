@@ -47,7 +47,7 @@ export function CountryDataForm() {
 
           <button
             onClick={() => fillDummyData()}
-            aria-label="print the invoice"
+            aria-label="skip"
             className="skip-button weight700 make-center"
           >
             Skip

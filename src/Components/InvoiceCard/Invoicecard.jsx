@@ -8,6 +8,8 @@ import { SideBar } from "../SideBar";
 import { Navbar } from "../Navbar";
 import { useSelector } from "react-redux";
 import { useDataContext } from "../../Context/DataContext";
+import ReactPDF from "@react-pdf/renderer";
+import MyDocument from "../Document";
 
 export function InvoiceCard() {
   const { invoiceId } = useParams();
@@ -15,6 +17,10 @@ export function InvoiceCard() {
   const invoice = invoiceList.find((invoices) => invoices._id === invoiceId);
   const navigate = useNavigate();
   const { setId } = useDataContext();
+
+  function download() {
+    navigate(`/download/${invoice._id}`);
+  }
 
   return (
     <>
@@ -68,12 +74,14 @@ export function InvoiceCard() {
                   {invoice.customer.email}
                 </a>
               </div>
-              <Button
-                callback={window.print}
-                image={printer}
-                styleClass={"print-btn"}
-                childrenText={"PRINT"}
-              />
+              <button
+                onClick={() => download()}
+                aria-label="print the invoice"
+                className="print-btn"
+              >
+                PRINT
+                <img alt="printer" src={printer} />
+              </button>
             </div>
           </div>
           <div className="table-cover">
