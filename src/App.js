@@ -19,7 +19,7 @@ function App() {
   const { showModal, invoiceModal } = useDataContext();
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     (async function () {
       try {
         const {
