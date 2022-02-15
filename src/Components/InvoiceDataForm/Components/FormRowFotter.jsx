@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { BASE_URL } from "../../../App";
 import { useDataContext } from "../../../Context/DataContext";
 import { updateInvoiceList } from "../../../redux/userSlice";
 export default function FormRowFotter({
@@ -57,7 +58,7 @@ export default function FormRowFotter({
       data: { doc },
       status,
     } = await axios.post(
-      "http://localhost:5000/api/invoices/create",
+      BASE_URL + "api/invoices/create",
       { invoice: invoiceData },
       { withCredentials: true }
     );
