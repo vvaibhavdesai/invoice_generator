@@ -4,12 +4,19 @@ import { Navbar } from "./Navbar";
 import { SideBar } from "./SideBar";
 
 export function Invoice() {
-  const { setShowModal } = useDataContext();
+  const { id, setShowModal } = useDataContext();
 
   return (
     <>
       <Navbar />
-      <div className="App">
+      <div
+        className="App"
+          // style={{
+          //   gridTemplateAreas: `${
+          //     id ? `sidebar invoice-card-holder` : `sidebar invoice-card`
+          //   }`,
+          // }}
+      >
         <SideBar />
         <section className="invoice-card">
           <h2 className="gray super-small-text text-align-left">

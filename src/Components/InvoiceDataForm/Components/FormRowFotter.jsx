@@ -30,6 +30,9 @@ export default function FormRowFotter({
     subTotal,
     grandTotal
   ) {
+    if(grandTotal === 0){
+        return window.alert("please  fill the all necessary details")
+      }
     const invoiceData = {
       date: new Date(),
       id: uuidv4(),
@@ -64,6 +67,7 @@ export default function FormRowFotter({
     );
     if (status === 200) {
       dispatch(updateInvoiceList(doc));
+      console.log("from form row fotter", doc);
       return setInvoiceModal(false);
     } else if (status !== 200) {
       return window.alert("Error in adding invoice");

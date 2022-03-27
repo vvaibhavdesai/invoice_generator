@@ -1,29 +1,21 @@
 import axios from "axios";
-import { useState, createContext, useContext, useLayoutEffect } from "react";
+import {
+  useState,
+  createContext,
+  useContext,
+  useLayoutEffect,
+  useEffect,
+} from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../App";
+import { updateInvoiceList } from "../redux/userSlice";
 
 export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  useLayoutEffect(() => {
-    (async function () {
-      try {
-        const { data } = await axios.get(BASE_URL + "api/auth/userinfo", {
-          withCredentials: true,
-        });
-        if (data.code === "USER_INFO_FETCHED") {
-          let userData = {
-            ...data,
-          };
-          setUser(userData);
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    })();
-  }, []);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

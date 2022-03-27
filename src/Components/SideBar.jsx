@@ -27,7 +27,7 @@ export function SideBar() {
               >
                 <div className="invoice-list">
                   <div className="invoice-details">
-                    <h4 className={id === item._id ? `white` : ``}>
+                    <h4 className={`ellipsis ${id === item._id ? `white` : ``}`}>
                       Inv: #{item._id}
                     </h4>
                     <time>{formatDate(item.date)}</time>

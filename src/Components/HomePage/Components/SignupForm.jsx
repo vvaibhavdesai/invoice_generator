@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../App";
 import { useAuthContext } from "../../../Context/AuthContext";
@@ -11,6 +11,8 @@ export default function SignupForm({ heroVisibility }) {
   const [register, setRegister] = useState(false);
   const { setUser } = useAuthContext();
 
+  const dummyEmail = "testinguser@gmail.com";
+  const dummyPassword = "testinguser@gmail.com";
   async function loginHandler({ email, password }) {
     try {
       const { data } = await axios.post(
@@ -19,7 +21,9 @@ export default function SignupForm({ heroVisibility }) {
           email,
           password,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+        }
       );
       if (data.code === "LOGIN_SUCCESS") {
         setUser(data);
@@ -61,6 +65,16 @@ export default function SignupForm({ heroVisibility }) {
               Login
             </button>
           </span>
+          <span className="margin1rem">
+            <button
+              onClick={() =>
+                loginHandler({ email: dummyEmail, password: dummyPassword })
+              }
+              className=" guest-login-btn login-btn "
+            >
+              Guest Login
+            </button>
+          </span>
         </div>
       </nav>
 
@@ -70,16 +84,17 @@ export default function SignupForm({ heroVisibility }) {
             onSubmit={(e) => {
               e.preventDefault();
               if (register === true) {
-                registerHandler({
+                return registerHandler({
                   name: name.current,
                   email: email.current,
                   password: password.current,
                 });
+              } else {
+                return loginHandler({
+                  email: email.current,
+                  password: password.current,
+                });
               }
-              return loginHandler({
-                email: email.current,
-                password: password.current,
-              });
             }}
             className="login-form"
           >

@@ -1,23 +1,59 @@
 import hero from "../../assets/hero.svg";
 import herotxt from "../../assets/hero-text.svg";
 import { motion } from "framer-motion";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import SignupForm from "./Components/SignupForm";
 import { useAuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
+import { BASE_URL } from "../../App";
+import { updateInvoiceList } from "../../redux/userSlice";
+import { useDispatch } from "react-redux";
+
 
 export default function Homepage() {
   const [heroVisibility, setHeroVisibility] = useState(false);
-  const { user } = useAuthContext();
+  const { user, setUser } = useAuthContext();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (user?.userID) {
       return navigate("/dashboard");
     } else {
       return;
     }
   }, [user]);
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const { data } = await axios.get(BASE_URL + "api/auth/userinfo", {
+          withCredentials: true,
+        });
+        // const {
+        //   data: {
+        //     invoices: { userInvoices },
+        //   },
+        // } = await axios.get(BASE_URL + "api/invoices/all", {
+        //   withCredentials: true,
+        // });
+        
+        if (data.code === "USER_INFO_FETCHED") {
+          let userData = {
+            ...data,
+          };
+          setUser(userData);
+        }
+        if (user) {
+          navigate("/dashboard");
+          // return dispatch(updateInvoiceList(userInvoices));
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    })();
+  }, []);
 
   return (
     <>
@@ -63,6 +99,9 @@ export default function Homepage() {
         </section>
         <motion.button
           onClick={() => {
+            window.alert(
+              "Please use guest login, Been working on fixing the auth for this app! Thank you:)"
+            );
             navigate("/register");
             return setHeroVisibility(true);
           }}

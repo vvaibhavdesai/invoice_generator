@@ -59,11 +59,11 @@ export function InvoiceDataForm() {
     };
     setItemsList((items) => [...items, item]);
     return clearItemInput(
-      setTax,
-      setDiscount,
-      setItemName,
-      setQuantity,
-      setPrice
+      {tax:setTax,
+      discount:setDiscount,
+      itemName:setItemName,
+      quantity:setQuantity,
+      price:setPrice}
     );
   }
 

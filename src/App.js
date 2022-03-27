@@ -3,24 +3,35 @@ import { Invoice } from "./Components/Invoice";
 import { CountryDataForm } from "./Components/CountryDataForm/CountryDataForm";
 import { useDataContext } from "./Context/DataContext";
 import { InvoiceDataForm } from "./Components/InvoiceDataForm/InvoiceDataForm";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { InvoiceCard } from "./Components/InvoiceCard/Invoicecard";
 import Homepage from "./Components/HomePage/Homepage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { updateInvoiceList } from "./redux/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SignupForm from "./Components/HomePage/Components/SignupForm";
 import MyDocument from "./Components/Document";
+import { useAuthContext } from "./Context/AuthContext";
 
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function App() {
   const { showModal, invoiceModal } = useDataContext();
+  const { user, setUser } = useAuthContext();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userInvoices = useSelector((state) => state.user.invoiceList);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    console.log(user, "this is user");
+  }, [user]);
+
+  useEffect(() => {
+    if(userInvoices.length > 0) {
+      return;
+    }
     (async function () {
       try {
         const {
@@ -31,6 +42,8 @@ function App() {
           withCredentials: true,
         });
         if (userInvoices) {
+          console.log(user, "userId");
+          navigate("/dashboard");
           return dispatch(updateInvoiceList(userInvoices));
         }
       } catch (e) {
