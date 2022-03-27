@@ -184,6 +184,15 @@ body {
   border-radius: 5px;
   border: 2px solid #ff64a4;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.guest-login-btn{
+  border: 3px solid #ff64a4;
+  border-radius: 10px;
+  color: #ff64a4;
+  background-color: white;
 }
 
 /* navbar */
@@ -197,6 +206,13 @@ body {
 /* sidebar */
 .sidebar {
   background: #303048;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .selected {
@@ -220,7 +236,10 @@ body {
 
 .sidebar-list {
   list-style: none;
-  padding: 0;
+  padding: 0 0 5rem 0;
+}
+.sidebar::-webkit-scrollbar{
+  width:5px
 }
 .invoice-list {
   padding: 0.5rem 1rem 0.2rem 0.5rem;
@@ -229,10 +248,15 @@ body {
   background: transparent;
   border: none;
 }
+li{
+  cursor: pointer;
+  border-bottom:1px solid #8686bb
+}
 .invoice-details {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .invoice-details-bottom-row {
   display: flex;
@@ -263,7 +287,7 @@ body {
   justify-content: space-between;
 }
 .invoice-card-holder {
-  display: grid;
+  /* display: grid; */
   gap: 2rem;
   padding: 4rem 4rem 2rem 4rem;
   max-width: 70rem;
